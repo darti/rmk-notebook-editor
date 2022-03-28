@@ -1,46 +1,44 @@
-use yew::prelude::*;
+mod canvas;
 
-enum Msg {
-    AddOne,
+use yew::{html, Component, Context, Html};
+
+use gloo_file::File;
+
+use crate::canvas::Canvas;
+
+type Chunks = bool;
+
+pub enum Msg {
+    Loaded(String, String),
+    LoadedBytes(String, Vec<u8>),
+    Files(Vec<File>, Chunks),
+    ToggleReadBytes,
 }
 
-struct Model {
-    value: i64,
-}
+pub struct App {}
 
-impl Component for Model {
+impl Component for App {
     type Message = Msg;
     type Properties = ();
 
     fn create(_ctx: &Context<Self>) -> Self {
-        Self {
-            value: 0,
-        }
+        Self {}
     }
 
-    fn update(&mut self, _ctx: &Context<Self>, msg: Self::Message) -> bool {
-        match msg {
-            Msg::AddOne => {
-                self.value += 1;
-                // the value has changed so we need to
-                // re-render for it to appear on the page
-                true
-            }
-        }
+    fn update(&mut self, ctx: &Context<Self>, msg: Self::Message) -> bool {
+        true
     }
 
     fn view(&self, ctx: &Context<Self>) -> Html {
-        // This gives us a component's "`Scope`" which allows us to send messages, etc to the component.
-        let link = ctx.link();
         html! {
             <div>
-                <button onclick={link.callback(|_| Msg::AddOne)}>{ "+1" }</button>
-                <p>{ self.value }</p>
+                {"toto"}
+                <Canvas />
             </div>
         }
     }
 }
 
 fn main() {
-    yew::start_app::<Model>();
+    yew::start_app::<App>();
 }
