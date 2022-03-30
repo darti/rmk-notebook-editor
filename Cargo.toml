@@ -11,6 +11,9 @@ js-sys = "0.3"
 
 yew = "0.19"
 wasm-bindgen = "0.2"
+piet-common = { version = "0.5", features = ["web"] }
+console_error_panic_hook = "0.1"
+piet = "0.5"
 
 
 [dependencies.web-sys]
@@ -23,21 +26,3 @@ features = [
     'WebGlShader',
     'WebGlUniformLocation',
 ]
-
-[dependencies.pathfinder_webgl]
-git = "https://github.com/servo/pathfinder"
-
-[dependencies.pathfinder_geometry]
-git = "https://github.com/servo/pathfinder"
-
-[dependencies.pathfinder_renderer]
-git = "https://github.com/servo/pathfinder"
-
-[dependencies.pathfinder_color]
-git = "https://github.com/servo/pathfinder"
-
-[dependencies.pathfinder_resources]
-git = "https://github.com/servo/pathfinder"
-
-[dependencies.pathfinder_canvas]
-git = "https://github.com/servo/pathfinder"
